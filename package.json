@@ -1,0 +1,38 @@
+{
+  "name": "cdpdhn-pwa",
+  "private": true,
+  "version": "0.1.0",
+  "description": "CDPDHN \u2014 Plataforma de Consulta e Coleta de Dados (front-end PWA com dados fict\u00edcios para demonstra\u00e7\u00e3o)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host --port 4173",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/atkinson-hyperlegible-next": "5.2.6",
+    "@fontsource/atkinson-hyperlegible-mono": "5.2.6",
+    "framer-motion": "12.23.0",
+    "lucide-react": "0.523.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "three": "0.177.0",
+    "zustand": "5.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@types/three": "0.177.0",
+    "@vitejs/plugin-react": "4.5.2",
+    "typescript": "5.8.3",
+    "vite": "6.3.5",
+    "vite-plugin-pwa": "1.0.0",
+    "vitest": "3.2.4"
+  },
+  "overrides": {
+    "motion-dom": "12.22.0",
+    "motion-utils": "12.19.0"
+  }
+}

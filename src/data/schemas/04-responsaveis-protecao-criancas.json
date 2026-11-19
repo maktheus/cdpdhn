@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/04-responsaveis-protecao-criancas",
+  "title": "Responsáveis e proteção de crianças e adolescentes",
+  "description": "Quem é responsável, quais direitos foram violados e se a rede de proteção já foi acionada (ECA).",
+  "type": "object",
+  "x-order": 4,
+  "x-appliesTo": [
+    "criancas"
+  ],
+  "properties": {
+    "responsavel_nome": {
+      "type": "string",
+      "title": "Nome do responsável",
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "vinculo": {
+      "type": "string",
+      "title": "Vínculo com a criança ou adolescente",
+      "enum": [
+        "Mãe",
+        "Pai",
+        "Avó ou avô",
+        "Outro familiar",
+        "Guarda judicial",
+        "Acolhimento institucional"
+      ]
+    },
+    "convive_responsavel": {
+      "type": "boolean",
+      "title": "Convive com o responsável"
+    },
+    "direitos_violados": {
+      "type": "array",
+      "title": "Direitos violados identificados",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Negligência",
+          "Violência física",
+          "Violência psicológica",
+          "Violência sexual",
+          "Trabalho infantil",
+          "Exploração",
+          "Afastamento escolar",
+          "Situação de rua"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2,
+        "sensitive": true
+      }
+    },
+    "conselho_tutelar": {
+      "type": "boolean",
+      "title": "Conselho Tutelar acionado"
+    },
+    "data_conselho": {
+      "type": "string",
+      "format": "date",
+      "title": "Data do acionamento",
+      "x-ui": {
+        "showIf": {
+          "field": "conselho_tutelar",
+          "equals": true
+        }
+      }
+    },
+    "medida_protetiva": {
+      "type": "string",
+      "title": "Medida de proteção vigente",
+      "enum": [
+        "Não",
+        "Sim",
+        "Em análise"
+      ],
+      "x-ui": {
+        "widget": "radio"
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

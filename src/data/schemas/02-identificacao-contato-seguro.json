@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/02-identificacao-contato-seguro",
+  "title": "Identificação e contato seguro",
+  "description": "Como a pessoa quer ser chamada e como falar com ela sem expô-la a risco.",
+  "type": "object",
+  "x-order": 2,
+  "x-appliesTo": [
+    "*"
+  ],
+  "properties": {
+    "nome_social": {
+      "type": "string",
+      "title": "Nome social ou como prefere ser chamada",
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "nome_civil": {
+      "type": "string",
+      "title": "Nome civil",
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "data_nascimento": {
+      "type": "string",
+      "format": "date",
+      "title": "Data de nascimento",
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "sexo": {
+      "type": "string",
+      "title": "Sexo",
+      "enum": [
+        "Feminino",
+        "Masculino",
+        "Intersexo",
+        "Não informado"
+      ]
+    },
+    "identidade_genero": {
+      "type": "string",
+      "title": "Identidade de gênero",
+      "enum": [
+        "Mulher cis",
+        "Homem cis",
+        "Mulher trans ou travesti",
+        "Homem trans",
+        "Pessoa não binária",
+        "Prefere não informar"
+      ],
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "raca_cor": {
+      "type": "string",
+      "title": "Raça/cor (IBGE)",
+      "enum": [
+        "Branca",
+        "Preta",
+        "Parda",
+        "Amarela",
+        "Indígena",
+        "Não informado"
+      ],
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "povo_indigena": {
+      "type": "string",
+      "title": "Povo ou etnia",
+      "x-ui": {
+        "sensitive": true,
+        "showIf": {
+          "field": "raca_cor",
+          "equals": "Indígena"
+        }
+      }
+    },
+    "nacionalidade": {
+      "type": "string",
+      "title": "Nacionalidade",
+      "enum": [
+        "Brasileira",
+        "Venezuelana",
+        "Haitiana",
+        "Colombiana",
+        "Cubana",
+        "Outra"
+      ]
+    },
+    "cpf": {
+      "type": "string",
+      "title": "CPF",
+      "pattern": "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$",
+      "x-ui": {
+        "mask": "cpf",
+        "sensitive": true,
+        "placeholder": "000.000.000-00",
+        "mono": true
+      }
+    },
+    "telefone": {
+      "type": "string",
+      "title": "Telefone",
+      "x-ui": {
+        "mask": "phone",
+        "placeholder": "(92) 90000-0000",
+        "mono": true
+      }
+    },
+    "contato_seguro": {
+      "type": "string",
+      "title": "É seguro ligar ou mandar mensagem neste número?",
+      "enum": [
+        "Sim",
+        "Não",
+        "Somente em horários combinados"
+      ],
+      "x-ui": {
+        "widget": "radio",
+        "span": 2
+      }
+    },
+    "orientacao_contato": {
+      "type": "string",
+      "title": "Como fazer contato com segurança",
+      "x-ui": {
+        "widget": "textarea",
+        "span": 2,
+        "placeholder": "Ex.: ligar só depois das 18h; se outra pessoa atender, dizer que é da escola.",
+        "showIf": {
+          "field": "contato_seguro",
+          "in": [
+            "Não",
+            "Somente em horários combinados"
+          ]
+        }
+      }
+    },
+    "bairro": {
+      "type": "string",
+      "title": "Bairro ou comunidade"
+    },
+    "municipio": {
+      "type": "string",
+      "title": "Município",
+      "default": "Manaus"
+    },
+    "ciencia_lgpd": {
+      "type": "boolean",
+      "title": "A pessoa foi informada sobre este registro e sobre o uso dos dados (LGPD)",
+      "x-ui": {
+        "span": 2,
+        "help": "Base legal: execução de políticas públicas (LGPD, art. 7º, III e art. 11, II, b)."
+      }
+    }
+  },
+  "required": [
+    "contato_seguro",
+    "ciencia_lgpd"
+  ],
+  "additionalProperties": false
+}

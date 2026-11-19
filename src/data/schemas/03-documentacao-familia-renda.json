@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/03-documentacao-familia-renda",
+  "title": "Documentação, família e renda",
+  "description": "Documentos que a pessoa tem, quem vive com ela e de que renda dispõe.",
+  "type": "object",
+  "x-order": 3,
+  "x-appliesTo": [
+    "*"
+  ],
+  "properties": {
+    "documentos": {
+      "type": "array",
+      "title": "Documentos que possui",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Certidão de nascimento",
+          "RG ou CIN",
+          "CPF",
+          "Carteira de trabalho",
+          "Título de eleitor",
+          "Cartão do SUS",
+          "Documento de migrante (CRNM ou protocolo)"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    },
+    "precisa_documentos": {
+      "type": "boolean",
+      "title": "Precisa emitir ou regularizar documentos"
+    },
+    "pessoas_familia": {
+      "type": "integer",
+      "title": "Pessoas na família",
+      "minimum": 1,
+      "maximum": 20
+    },
+    "renda_familiar": {
+      "type": "string",
+      "title": "Renda familiar por pessoa",
+      "enum": [
+        "Sem renda",
+        "Até 1/4 do salário mínimo",
+        "Até 1/2 salário mínimo",
+        "Acima de 1/2 salário mínimo",
+        "Não informado"
+      ]
+    },
+    "beneficios": {
+      "type": "array",
+      "title": "Benefícios recebidos",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Bolsa Família",
+          "BPC",
+          "Auxílio estadual ou municipal",
+          "Nenhum"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    },
+    "cadunico": {
+      "type": "string",
+      "title": "Inscrita no CadÚnico",
+      "enum": [
+        "Sim",
+        "Não",
+        "Não sabe"
+      ],
+      "x-ui": {
+        "widget": "radio"
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

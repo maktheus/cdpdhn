@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/05-moradia-alimentacao-educacao",
+  "title": "Moradia, alimentação e educação de crianças e adolescentes",
+  "description": "Condições da casa, segurança alimentar e vínculo com a escola.",
+  "type": "object",
+  "x-order": 5,
+  "x-appliesTo": [
+    "criancas"
+  ],
+  "properties": {
+    "tipo_moradia": {
+      "type": "string",
+      "title": "Tipo de moradia",
+      "enum": [
+        "Própria",
+        "Alugada",
+        "Cedida",
+        "Ocupação",
+        "Palafita ou área de risco",
+        "Sem moradia"
+      ]
+    },
+    "condicoes": {
+      "type": "array",
+      "title": "A moradia tem",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Água encanada",
+          "Energia elétrica",
+          "Saneamento",
+          "Coleta de lixo"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    },
+    "seguranca_alimentar": {
+      "type": "string",
+      "title": "Segurança alimentar (EBIA)",
+      "enum": [
+        "Segura",
+        "Insegurança leve",
+        "Insegurança moderada",
+        "Insegurança grave"
+      ]
+    },
+    "refeicoes_dia": {
+      "type": "integer",
+      "title": "Refeições por dia",
+      "minimum": 0,
+      "maximum": 6
+    },
+    "matriculado": {
+      "type": "boolean",
+      "title": "Está matriculada(o) na escola"
+    },
+    "serie": {
+      "type": "string",
+      "title": "Série ou ano",
+      "x-ui": {
+        "showIf": {
+          "field": "matriculado",
+          "equals": true
+        }
+      }
+    },
+    "frequencia": {
+      "type": "string",
+      "title": "Frequência escolar",
+      "enum": [
+        "Regular",
+        "Irregular",
+        "Afastada(o)"
+      ],
+      "x-ui": {
+        "widget": "radio",
+        "showIf": {
+          "field": "matriculado",
+          "equals": true
+        }
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

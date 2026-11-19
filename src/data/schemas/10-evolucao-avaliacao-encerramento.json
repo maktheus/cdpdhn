@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/10-evolucao-avaliacao-encerramento",
+  "title": "Evolução, avaliação e encerramento",
+  "description": "Como o caso está andando e, quando for o caso, por que foi encerrado.",
+  "type": "object",
+  "x-order": 10,
+  "x-appliesTo": [
+    "*"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "title": "Situação do caso",
+      "enum": [
+        "Em acompanhamento",
+        "Aguardando retorno",
+        "Encerrado"
+      ],
+      "default": "Em acompanhamento",
+      "x-ui": {
+        "widget": "radio",
+        "span": 2
+      }
+    },
+    "evolucao": {
+      "type": "string",
+      "title": "Evolução",
+      "x-ui": {
+        "widget": "textarea",
+        "span": 2
+      }
+    },
+    "avaliacao_encaminhamentos": {
+      "type": "string",
+      "title": "Encaminhamentos",
+      "enum": [
+        "Efetivados",
+        "Parcialmente efetivados",
+        "Não efetivados",
+        "Aguardando resposta"
+      ]
+    },
+    "motivo_encerramento": {
+      "type": "string",
+      "title": "Motivo do encerramento",
+      "enum": [
+        "Objetivos alcançados",
+        "Vinculada à rede de proteção",
+        "Mudança de território",
+        "Recusa da pessoa",
+        "Perda de contato"
+      ],
+      "x-ui": {
+        "showIf": {
+          "field": "status",
+          "equals": "Encerrado"
+        }
+      }
+    },
+    "data_encerramento": {
+      "type": "string",
+      "format": "date",
+      "title": "Data do encerramento",
+      "x-ui": {
+        "showIf": {
+          "field": "status",
+          "equals": "Encerrado"
+        }
+      }
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "additionalProperties": false
+}

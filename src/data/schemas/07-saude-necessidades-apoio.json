@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/07-saude-necessidades-apoio",
+  "title": "Saúde e necessidades de apoio",
+  "description": "Acompanhamento de saúde e apoios para que a pessoa consiga acessar os serviços.",
+  "type": "object",
+  "x-order": 7,
+  "x-appliesTo": [
+    "*"
+  ],
+  "properties": {
+    "deficiencia": {
+      "type": "string",
+      "title": "Deficiência",
+      "enum": [
+        "Não",
+        "Física",
+        "Visual",
+        "Auditiva",
+        "Intelectual",
+        "Psicossocial",
+        "Múltipla"
+      ],
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "acompanhamento_saude": {
+      "type": "array",
+      "title": "Acompanhamento de saúde",
+      "items": {
+        "type": "string",
+        "enum": [
+          "UBS",
+          "CAPS",
+          "CAPS AD",
+          "Hospital ou ambulatório",
+          "Nenhum"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2,
+        "sensitive": true
+      }
+    },
+    "medicacao_continua": {
+      "type": "boolean",
+      "title": "Usa medicação contínua",
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "uso_substancias": {
+      "type": "string",
+      "title": "Uso de álcool ou outras drogas",
+      "enum": [
+        "Não",
+        "Uso eventual",
+        "Uso prejudicial",
+        "Prefere não informar"
+      ],
+      "x-ui": {
+        "sensitive": true
+      }
+    },
+    "gestante": {
+      "type": "string",
+      "title": "Gestante",
+      "enum": [
+        "Não se aplica",
+        "Sim",
+        "Não"
+      ],
+      "x-ui": {
+        "widget": "radio"
+      }
+    },
+    "apoios_necessarios": {
+      "type": "array",
+      "title": "Precisa de",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Acessibilidade",
+          "Intérprete de Libras",
+          "Intérprete de idioma",
+          "Acompanhante ou cuidador",
+          "Transporte"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

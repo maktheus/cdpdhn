@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/01-identificacao-atendimento",
+  "title": "Identificação do atendimento",
+  "description": "Quem atende, onde, quando e por qual porta de entrada a pessoa chegou.",
+  "type": "object",
+  "x-order": 1,
+  "x-appliesTo": [
+    "*"
+  ],
+  "properties": {
+    "codigo_pessoa": {
+      "type": "string",
+      "title": "Código da pessoa",
+      "x-ui": {
+        "placeholder": "Ex.: P-0142",
+        "mono": true
+      }
+    },
+    "prontuario": {
+      "type": "string",
+      "title": "Prontuário",
+      "x-ui": {
+        "placeholder": "Ex.: PR-2026-0381",
+        "mono": true
+      }
+    },
+    "codigo_caso": {
+      "type": "string",
+      "title": "Código do caso",
+      "x-ui": {
+        "placeholder": "Ex.: C-0907",
+        "mono": true
+      }
+    },
+    "codigo_atendimento": {
+      "type": "string",
+      "title": "Código do atendimento",
+      "readOnly": true,
+      "x-ui": {
+        "autofill": "code",
+        "mono": true,
+        "help": "Gerado ao registrar"
+      }
+    },
+    "data": {
+      "type": "string",
+      "format": "date",
+      "title": "Data",
+      "x-ui": {
+        "autofill": "today"
+      }
+    },
+    "hora": {
+      "type": "string",
+      "format": "time",
+      "title": "Hora",
+      "x-ui": {
+        "autofill": "now"
+      }
+    },
+    "unidade": {
+      "type": "string",
+      "title": "Unidade ou projeto",
+      "enum": [
+        "Unidade Centro",
+        "Unidade Zona Norte",
+        "Unidade Zona Leste",
+        "Equipe de Abordagem Social",
+        "Projeto Ribeirinho (Rio Negro)"
+      ],
+      "x-ui": {
+        "autofill": "unit"
+      }
+    },
+    "profissional": {
+      "type": "string",
+      "title": "Profissional e função",
+      "x-ui": {
+        "autofill": "user"
+      }
+    },
+    "tipo": {
+      "type": "string",
+      "title": "Tipo",
+      "enum": [
+        "Acolhida inicial",
+        "Atendimento particularizado",
+        "Acompanhamento ou retorno",
+        "Abordagem social",
+        "Visita domiciliar"
+      ]
+    },
+    "modalidade": {
+      "type": "string",
+      "title": "Modalidade",
+      "enum": [
+        "Presencial",
+        "Itinerante em campo",
+        "Visita domiciliar",
+        "Remoto (telefone ou vídeo)"
+      ]
+    },
+    "ingresso": {
+      "type": "string",
+      "title": "Ingresso",
+      "enum": [
+        "Demanda espontânea",
+        "Busca ativa",
+        "Encaminhamento da rede",
+        "Denúncia (Disque 100 ou ouvidoria)"
+      ]
+    },
+    "origem": {
+      "type": "string",
+      "title": "Origem",
+      "enum": [
+        "CRAS",
+        "CREAS",
+        "Conselho Tutelar",
+        "Defensoria Pública",
+        "Ministério Público",
+        "Saúde (UBS ou CAPS)",
+        "Escola",
+        "Comunidade ou liderança local",
+        "Outra"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "hora",
+    "unidade",
+    "profissional",
+    "tipo",
+    "modalidade",
+    "ingresso"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/06-situacao-rua-pernoite-apoios",
+  "title": "Situação de rua, pernoite e apoios",
+  "description": "Onde a pessoa dorme, há quanto tempo está na rua e que apoios já recebe.",
+  "type": "object",
+  "x-order": 6,
+  "x-appliesTo": [
+    "situacao_rua"
+  ],
+  "properties": {
+    "em_situacao_rua": {
+      "type": "boolean",
+      "title": "Está em situação de rua"
+    },
+    "tempo_rua": {
+      "type": "string",
+      "title": "Há quanto tempo",
+      "enum": [
+        "Menos de 6 meses",
+        "6 meses a 1 ano",
+        "1 a 5 anos",
+        "Mais de 5 anos"
+      ],
+      "x-ui": {
+        "showIf": {
+          "field": "em_situacao_rua",
+          "equals": true
+        }
+      }
+    },
+    "pernoite": {
+      "type": "string",
+      "title": "Onde costuma dormir",
+      "enum": [
+        "Rua ou praça",
+        "Centro POP",
+        "Abrigo ou casa de acolhida",
+        "Casa de passagem",
+        "Alterna locais"
+      ],
+      "x-ui": {
+        "showIf": {
+          "field": "em_situacao_rua",
+          "equals": true
+        }
+      }
+    },
+    "motivos": {
+      "type": "array",
+      "title": "Motivos relatados",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Conflitos familiares",
+          "Desemprego",
+          "Uso de álcool ou drogas",
+          "Perda da moradia",
+          "Migração",
+          "Violência"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2,
+        "showIf": {
+          "field": "em_situacao_rua",
+          "equals": true
+        }
+      }
+    },
+    "apoios": {
+      "type": "array",
+      "title": "Apoios que já recebe",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Alimentação",
+          "Banho e higiene",
+          "Guarda de pertences",
+          "Documentação",
+          "Endereço de referência"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    },
+    "vinculos": {
+      "type": "string",
+      "title": "Vínculos familiares",
+      "enum": [
+        "Preservados",
+        "Fragilizados",
+        "Rompidos"
+      ],
+      "x-ui": {
+        "widget": "radio"
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

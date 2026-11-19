@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/08-demandas-riscos-rede",
+  "title": "Demandas, riscos e acesso à rede",
+  "description": "O que a pessoa precisa agora, qual o nível de risco e por onde ela já passou.",
+  "type": "object",
+  "x-order": 8,
+  "x-appliesTo": [
+    "*"
+  ],
+  "properties": {
+    "demandas": {
+      "type": "array",
+      "title": "Demandas apresentadas",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Documentação",
+          "Moradia",
+          "Alimentação",
+          "Saúde",
+          "Educação",
+          "Trabalho e renda",
+          "Proteção contra violência",
+          "Orientação jurídica",
+          "Regularização migratória"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    },
+    "nivel_risco": {
+      "type": "string",
+      "title": "Nível de risco",
+      "enum": [
+        "Baixo",
+        "Médio",
+        "Alto",
+        "Iminente"
+      ],
+      "x-ui": {
+        "widget": "radio"
+      }
+    },
+    "prioridade": {
+      "type": "string",
+      "title": "Prioridade",
+      "enum": [
+        "Regular",
+        "Urgente"
+      ],
+      "x-ui": {
+        "widget": "radio"
+      }
+    },
+    "justificativa_urgencia": {
+      "type": "string",
+      "title": "Por que é urgente",
+      "x-ui": {
+        "widget": "textarea",
+        "span": 2,
+        "showIf": {
+          "field": "prioridade",
+          "equals": "Urgente"
+        },
+        "placeholder": "Descreva o risco que justifica a prioridade."
+      }
+    },
+    "rede_acessada": {
+      "type": "array",
+      "title": "Serviços da rede que já acessou",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CRAS",
+          "CREAS",
+          "Centro POP",
+          "CAPS",
+          "Conselho Tutelar",
+          "Defensoria Pública",
+          "Delegacia especializada",
+          "Nenhum"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    }
+  },
+  "required": [
+    "demandas",
+    "prioridade"
+  ],
+  "additionalProperties": false
+}

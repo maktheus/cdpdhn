@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cdpdhn/subformularios/09-sintese-plano-encaminhamentos",
+  "title": "Síntese, plano e encaminhamentos",
+  "description": "O que foi combinado com a pessoa e para onde ela foi encaminhada.",
+  "type": "object",
+  "x-order": 9,
+  "x-appliesTo": [
+    "*"
+  ],
+  "properties": {
+    "sintese": {
+      "type": "string",
+      "title": "Síntese do atendimento",
+      "minLength": 10,
+      "x-ui": {
+        "widget": "textarea",
+        "span": 2,
+        "placeholder": "Resumo objetivo do que foi relatado e observado."
+      }
+    },
+    "objetivos": {
+      "type": "string",
+      "title": "Objetivos do plano de acompanhamento",
+      "x-ui": {
+        "widget": "textarea",
+        "span": 2
+      }
+    },
+    "encaminhamentos": {
+      "type": "array",
+      "title": "Encaminhamentos",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CRAS",
+          "CREAS",
+          "CAPS AD",
+          "UBS",
+          "Conselho Tutelar",
+          "Defensoria Pública",
+          "Centro POP",
+          "Casa de acolhimento",
+          "Delegacia especializada",
+          "Centro de Referência para Migrantes"
+        ]
+      },
+      "uniqueItems": true,
+      "x-ui": {
+        "widget": "checkboxes",
+        "span": 2
+      }
+    },
+    "prazo_retorno": {
+      "type": "string",
+      "format": "date",
+      "title": "Retorno combinado para"
+    },
+    "responsavel_plano": {
+      "type": "string",
+      "title": "Responsável pelo acompanhamento",
+      "x-ui": {
+        "autofill": "user"
+      }
+    }
+  },
+  "required": [
+    "sintese"
+  ],
+  "additionalProperties": false
+}
